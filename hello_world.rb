@@ -1,4 +1,4 @@
-print("introduce tu nombre: ")
+    print("introduce tu nombre: ")
 
 nombre = gets.chomp
 
