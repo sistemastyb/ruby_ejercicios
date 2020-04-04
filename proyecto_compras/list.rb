@@ -23,7 +23,7 @@ class List
 
     def check_item(index)
         @items[index].checked = true #metodo marcar un articulo y cambiar su estado de true o false
-
+        @items[index]
     end
     
     def remove_all
