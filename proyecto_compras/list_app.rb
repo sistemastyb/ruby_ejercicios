@@ -1,25 +1,21 @@
 require "./list.rb"
-require "./item.rb"
+require "./item.rb"     #requerir archivos de clases y metodos creados
 
-# vista de usuarios
-# Remover un articulo
-# ver todos los articulos
-# Marcar un articulo
-# borrar todos los articulos
-# salir de la app
+
 class ListApp
 
-    attr_writer :list
+    attr_writer :list   # instanciar la clase de ListApp solo escritura
 
-    def initialize
+    def initialize    # Merodo de inicializacion
 
-        @list = List.new
+        @list = List.new  # siempre que se inicialice la app crea una nueva lista
     
     end
 
-    def run 
-        puts "Bienvenido a tu lista de compras de compras"
-        loop do
+    def run  # Metodo de vista del usuario
+
+        puts "Bienvenido a tu lista de compras de compras" #Mensajes que ve el usuario que la usa
+        loop do                         #comienzo del cliclo se repite cuando hace una accion o inicia la app
         puts
         puts "a - agregar un articulo"
         puts "r - remover un articulo"
@@ -28,19 +24,19 @@ class ListApp
         puts "b - borrar todos articulo"
         puts "s - salir de la aplicacion"
            
-        input = gets.chomp
-        case input
+        input = gets.chomp   #Entrada de texto del usuario
+        case input   # toma la variables con la que vas ha trabajar 
 
 
-        when 'm'
+        when 'm'   #cuando m es la entrada de texto del usuario entonces marque el numero
 
             puts "# de articulos que desea marcar"
             index = gets.chomp
-          item = @list.check_item(index.to_i)
+          item = @list.check_item(index.to_i) #variable item y metodo de check index.to_i es para convertir a numeros enteros
 
-            40.times {print "*"}
+            40.times {print "*"} #se usa para imprir la veces que quiera el valor en esa linea
 
-            puts "\n #{item.text} ha sido marcado"
+            puts "\n #{item.text} ha sido marcado" # muestra en una linea la casilla marcada y el texto(nombre del producto)
 
             40.times {print "*"}
 
@@ -63,7 +59,8 @@ class ListApp
             puts "Estas seguro de borrar todos los articulos? s/n"
             input = gets.chomp
 
-            if input == 's'
+            if input == 's'   # condicion para generar un mensaje de confirmacion, si el input es igual a s se borrara toda la lista
+                              # de lo contrario no hara nada
                 @list.remove_all
             else
                 puts "Operación cancelada"
@@ -85,11 +82,11 @@ class ListApp
 
         when 's'
 
-            break
+            break   # se termnina el ciclo
 
         else
 
-            puts "operacion no reconocida"
+            puts "operacion no reconocida"  # cuando la entrada del usuario no es valida se genera este mensaje
 
             end
         end
@@ -100,5 +97,5 @@ class ListApp
 
 end
 
-    list_app = ListApp.new
-    list_app.run
+    list_app = ListApp.new  #se crea la nueva lista 
+    list_app.run # inicia la aplicacion
